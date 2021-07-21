@@ -14,7 +14,7 @@ import {
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await Axios.get('http://localhost:5004/api/list', {
+    const res = await Axios.get('http://localhost:5004/api/lists', {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
@@ -29,7 +29,7 @@ export const getLists = async (dispatch) => {
 export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await Axios.post('http://localhost:5004/api/list', list, {
+    const res = await Axios.post('http://localhost:5004/api/lists', list, {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
@@ -44,7 +44,7 @@ export const createList = async (list, dispatch) => {
 export const deleteList = async (id, dispatch) => {
   dispatch(deleteListStart());
   try {
-    await Axios.delete('http://localhost:5004/api/list' + id, {
+    await Axios.delete('http://localhost:5004/api/lists/' + id, {
       headers: {
         token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
       },
