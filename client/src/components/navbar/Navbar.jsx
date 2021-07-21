@@ -1,6 +1,7 @@
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import manAvatar from '../../assets/man-avatar.jpg';
 import './navbar.scss';
 
 const Navbar = () => {
@@ -35,7 +36,7 @@ const Navbar = () => {
           <span>KID</span>
           <Notifications className='icon' />
           <img
-            src='https://scontent.flos1-1.fna.fbcdn.net/v/t1.6435-9/135815391_2983224828571970_6606666135698533333_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFIWqJHvJq21rb-ohAV9rpZ3L1TkB07m7ncvVOQHTubuS36nYBaMmnY2jHp0wx2nQ4WGLknf17AIw-BAmi2OigA&_nc_ohc=EU7PiXjjuk4AX9RY_qw&_nc_ht=scontent.flos1-1.fna&oh=7d72cc8fd52781991d9ccdb1c81eb850&oe=60F6F41E'
+            src={manAvatar}
             alt=''
           />
           <div className='profile'>
