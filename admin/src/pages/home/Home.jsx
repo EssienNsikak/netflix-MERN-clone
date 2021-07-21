@@ -1,16 +1,65 @@
+import { useState, useEffect, useMemo } from 'react';
+import Axios from 'axios';
 import Chart from "../../components/chart/Chart";
 import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
 import "./home.css";
-import { userData } from "../../dummyData";
+// import { userData } from "../../dummyData";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 
 export default function Home() {
+
+  const MONTHS = useMemo(() =>
+   [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ], []
+  )
+  const [ userStats, setUserStats ] = useState([]);
+
+  useEffect(() => {
+    const getStats = async () => {
+      try {
+        const res = await Axios.get('http://localhost:5004/api/users/stats', {
+          headers: {
+            token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjQ0NDI0YTUxZTRhNWExMmJlYTNmZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjcxNTQ1MCwiZXhwIjoxNjI3MTQ3NDUwfQ.4uvl4tomVSh1RT97mK407wQI59FmxuXt2_H-dIY67xw'
+          }
+        });
+        const statsList = res.data.sort(function(a,b) {
+          return a._id - b._id
+        })
+        statsList.map((item) => 
+          setUserStats(prev => [
+            ...prev, 
+            {name:MONTHS[item._id - 1], 'New User': item.total}
+          ])
+        )
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getStats();
+  }, [MONTHS]);
+
   return (
-    <div className="home">
+    <div className='home'>
       <FeaturedInfo />
-      <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
-      <div className="homeWidgets">
+      <Chart 
+        data={userStats} 
+        title='User Analytics' 
+        grid dataKey='New User'
+      />
+      <div className='homeWidgets'>
         <WidgetSm/>
         <WidgetLg/>
       </div>
