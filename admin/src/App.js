@@ -12,7 +12,7 @@ import NewProduct from './pages/newProduct/NewProduct';
 import Login from './pages/login/Login';
 
 function App() {
-
+  
   return (
     <Router>
       <Switch>

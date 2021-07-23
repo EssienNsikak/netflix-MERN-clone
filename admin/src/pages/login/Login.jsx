@@ -9,6 +9,7 @@ export default function Login() {
   const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleLogin = (e) => {
+    console.log('calling login');
     e.preventDefault();
     login({ email, password }, dispatch);
   };
