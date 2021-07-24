@@ -2,21 +2,24 @@ import Sidebar from './components/sidebar/Sidebar';
 import Topbar from './components/topbar/Topbar';
 import './app.css';
 import Home from './pages/home/Home';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
-  Redirect 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
 } from 'react-router-dom';
 import UserList from './pages/userList/UserList';
 import User from './pages/user/User';
 import NewUser from './pages/newUser/NewUser';
-import ProductList from './pages/productList/ProductList';
-import Product from './pages/product/Product';
-import NewProduct from './pages/newProduct/NewProduct';
 import Login from './pages/login/Login';
 import { AuthContext } from './context/authContext/AuthContext';
 import { useContext } from 'react';
+import ListList from './pages/listList/ListList';
+import List from './pages/list/List';
+import NewList from './pages/newList/NewList';
+import MovieList from './pages/movieList/MovieList';
+import { Movie } from '@material-ui/icons';
+import NewMovie from './pages/newMovie/NewMovie';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -42,13 +45,22 @@ function App() {
                 <NewUser />
               </Route>
               <Route path='/movies'>
-                <ProductList />
+                <MovieList />
               </Route>
-              <Route path='/product/:productId'>
-                <Product />
+              <Route path='/movie/:movieId'>
+                <Movie />
               </Route>
-              <Route path='/newproduct'>
-                <NewProduct />
+              <Route path='/newMovie'>
+                <NewMovie />
+              </Route>
+              <Route path='/lists'>
+                <ListList />
+              </Route>
+              <Route path='/list/:listId'>
+                <List />
+              </Route>
+              <Route path='/newlist'>
+                <NewList />
               </Route>
             </div>
           </>
