@@ -38,7 +38,7 @@ export const updateMovieFailure = () => ({
 });
 
 export const deleteMovieStart = () => ({
-  type: "DELETE_MOVIE_START",
+  type: 'DELETE_MOVIE_START',
 });
 
 export const deleteMovieSuccess = (id) => ({
