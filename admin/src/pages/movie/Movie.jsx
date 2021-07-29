@@ -5,7 +5,7 @@ import { Publish } from '@material-ui/icons';
 export default function Movie() {
   const location = useLocation();
   const movie = location.movie;
-  console.log(location, 'location');
+  
   return (
     <div className='product'>
       <div className='productTitleContainer'>
